@@ -1,0 +1,9 @@
+apiVersion: keda.sh/v1alpha1
+kind: TriggerAuthentication
+metadata:
+  name: trigger-auth-service-bus-orders
+spec:
+  secretTargetRef:
+  - parameter: connection
+    name: servicebusconnection
+    key: connectionstring

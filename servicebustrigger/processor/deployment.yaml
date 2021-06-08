@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: queue-processor
+  labels:
+    app: queue-processor
+spec:
+  selector:
+    matchLabels:
+      app: queue-processor
+  template:
+    metadata:
+      labels:
+        app: queue-processor
+    spec:
+      containers:
+      - name: queue-processor
+        image: meuacrunico.azurecr.io/node-servicebus
+        env:
+        - name: SB_CONNECTION_STRING
+          valueFrom:
+            secretKeyRef:
+              name: servicebusconnection
+              key: connectionstring
+        - name: SB_QUEUE_NAME
+          value: kedatest

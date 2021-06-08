@@ -1,0 +1,37 @@
+apiVersion: keda.sh/v1alpha1
+kind: ScaledJob
+metadata:
+  name: azdevops-scaledjob
+spec:
+  jobTargetRef:
+    template:
+      spec:
+        containers:
+        - name: azdevops-agent-job
+          image: meuacrunico.azurecr.io/azdo-agent
+          imagePullPolicy: Always
+          env:
+          - name: AZP_URL
+            valueFrom:
+              secretKeyRef:
+                name: azdo-secret
+                key: url
+          - name: AZP_TOKEN
+            valueFrom:
+              secretKeyRef:
+                name: azdo-secret
+                key: token
+          - name: AZP_POOL
+            value: "RaczKedaPool"
+  pollingInterval: 30
+  successfulJobsHistoryLimit: 5
+  failedJobsHistoryLimit: 5
+  maxReplicaCount: 10   
+  scalingStrategy:
+    strategy: "default"               
+  triggers:
+  - type: azure-pipelines
+    metadata:
+      poolID: "10"
+    authenticationRef:
+      name: pipeline-trigger-auth

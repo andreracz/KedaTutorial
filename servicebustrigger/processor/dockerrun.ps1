@@ -1,0 +1,1 @@
+docker run -it --rm -e SB_CONNECTION_STRING=$env:SB_CONNECTION_STRING -e SB_QUEUE_NAME=$env:SB_QUEUE_NAME meuacrunico.azurecr.io/node-servicebus
