@@ -34,3 +34,9 @@ Temos nesse repositório, 2 exemplos do uso do KEDA:
 
 1. [Trigger do Azure Service Bus](servicebustrigger/README.md)
 2. [Azure Devops Pipeline Trigger](azdotrigger/README.md)
+
+
+Limpeza:
+--------
+
+Para limpar o ambiente (excluir os recursos no Azure e limpar o contexto do AKS), rode o comando: ```limpar-infra.ps1```
