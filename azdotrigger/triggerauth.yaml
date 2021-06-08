@@ -7,4 +7,6 @@ spec:
     - parameter: personalAccessToken
       name: azdo-secret
       key: token
-      
+    - parameter: organizationURL
+      name: azdo-secret
+      key: url
