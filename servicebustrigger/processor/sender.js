@@ -11,16 +11,17 @@ const queueName = process.env.SB_QUEUE_NAME;
 //console.log(connectionString);
 //console.log(queueName);
 
+
 let messages = [
  ];
 
 
-let quantity =  3;
+let quantity =  1;
 if (process.argv.length >2) {
     quantity = Number(process.argv[2]);
 }
 
-console.log("Sending " + quantity); 
+console.log("Sending " + 1); 
 
  for (var i = 0; i < quantity; i++) {
     messages[i] = { body: "Mensagem " + i };

@@ -22,7 +22,10 @@ spec:
                 name: azdo-secret
                 key: token
           - name: AZP_POOL
-            value: "RaczKedaPool"
+            valueFrom:
+              secretKeyRef:
+                name: azdo-secret
+                key: pool
   pollingInterval: 30
   successfulJobsHistoryLimit: 5
   failedJobsHistoryLimit: 5
